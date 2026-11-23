@@ -1,22 +1,25 @@
 # The World in One Day — Monday 23 November 2026
 
-A single 1024×1024 image summing up 23 November 2026's world news: 41 stories
-in 13 illustrated panels plus a numbered "also on" list and a world map with
-pins. Built with flat 2D vector art drawn in code (no photos, no AI imagery).
+One image summing up 23 November 2026's world news: 41 stories on a
+single 1024×1024 page — 13 illustrated panels (COP31 collapse, Hormuz
+attacks, the AI market rout, the Banten factory fire and more) plus 28
+more stories in the ALSO ON list, a world map with numbered pins, a
+six-number stat strip and a DATE CHECK footer.
 
-## How it is made
+Every panel is code-drawn flat 2D vector art (no generated photos);
+the page was rendered with Pillow on the build machine. The entry
+itself is a single PNG: `entry.png`.
 
-`entry.png` is rendered at build time from `build.py` (Pillow, build machine
-only). `main.py` is stdlib-only: it copies `entry.png` to
-`$MAKEFUN_OUTPUT_DIR/entry.png`.
+## Run
 
-## Stories covered (41)
+```sh
+MAKEFUN_OUTPUT_DIR=/tmp/out python3 main.py
+```
 
-Markets (AI rout rattles Asia, Seoul slides), Hormuz tanker attacks, the
-Seoul exam story replacing the Riemann item, Likud × Eisenkot, plus 28
-further stories in the numbered list — politics, conflict, climate, sport,
-science and culture from every continent, all reported on 23 Nov 2026.
+`main.py` is stdlib-only: it copies `entry.png` to
+`$MAKEFUN_OUTPUT_DIR/entry.png`. Nothing is installed, no network is
+needed, and running it twice produces identical bytes.
 
 ## License
 
-MIT — see LICENSE.
+MIT — see `LICENSE`.

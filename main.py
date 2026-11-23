@@ -1,31 +1,28 @@
-"""news-image-20261123 entrypoint: copy the pre-built image to the output dir.
+#!/usr/bin/env python3
+"""news-image-20261123 entrypoint: copy entry.png to the output dir.
 
-Stdlib only. The image is rendered at build time by build.py; this program
-just places it where the grader expects it.
+Stdlib only. The grader runs this in a fresh container with no
+network and a read-only repo, so the entry image ships in the repo
+and is copied verbatim to $MAKEFUN_OUTPUT_DIR/entry.png.
+A plain byte copy is deterministic: run twice, same output bytes.
 """
 import os
 import shutil
 import sys
 
-HERE = os.path.dirname(os.path.abspath(__file__))
-SRC = os.path.join(HERE, "entry.png")
+SRC = os.path.join(os.path.dirname(os.path.abspath(__file__)), "entry.png")
 
 
-def main() -> int:
-    out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "")
+def main():
+    out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR")
     if not out_dir:
         print("MAKEFUN_OUTPUT_DIR is not set", file=sys.stderr)
         return 1
     if not os.path.isfile(SRC):
-        print("entry.png is missing next to main.py", file=sys.stderr)
+        print("entry.png missing next to main.py", file=sys.stderr)
         return 1
     os.makedirs(out_dir, exist_ok=True)
-    dst = os.path.join(out_dir, "entry.png")
-    shutil.copyfile(SRC, dst)
-    # Sanity: the grader re-runs this program, so the copy must be exact.
-    if os.path.getsize(dst) != os.path.getsize(SRC):
-        print("copied entry.png size mismatch", file=sys.stderr)
-        return 1
+    shutil.copyfile(SRC, os.path.join(out_dir, "entry.png"))
     return 0
 
 
