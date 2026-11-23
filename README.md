@@ -1,22 +1,19 @@
-# The Day in World News — Monday 23 November 2026
+# Monday 23 November 2026 — The World in One Day
 
-One image summing up 23 November 2026's world news: 41 stories,
-13 illustrated panels and 28 more in the ALSO ON list, on a single
-1024×1024 page.
+A single 1024×1024 page summing up 23 November 2026 in world news:
+41 stories — 13 illustrated panels plus 28 more in the ALSO ON list —
+with a masthead date line, a six-number stat strip, a region bar, a
+numbered world map, and a DATE CHECK footer naming what was left out.
 
-## Contents
+Every panel is code-drawn flat 2D vector art (no generated images).
+All stories were reported, or still developing, on Monday 23 November
+2026 in at least one time zone; sources are credited on the page.
 
-- `entry.png` — the finished page (1024×1024, under 1 MiB)
-- `main.py` — stdlib-only program that copies `entry.png` to
-  `$MAKEFUN_OUTPUT_DIR/entry.png`
+## Run
 
-## Build
+`main.py` (Python 3.13, standard library only) copies the pre-built
+`entry.png` to `$MAKEFUN_OUTPUT_DIR/entry.png`.
 
-The page was rendered by a build script (Pillow, build machine only);
-the entry itself needs no dependencies at all — `main.py` uses only
-the Python standard library.
+## License
 
-## Sources
-
-Reuters, AP, BBC, CNN, Al Jazeera, Guardian, The Hindu, Firstpost,
-Xinhua, Kyodo, Space.com.
+MIT — see LICENSE.
